@@ -15,16 +15,17 @@ public class EmployeeController {
 
     private final EmployeeRepository repository;
 
-    public EmployeeController(EmployeeRepository repository) {
+    private final EmployeeModelAssembler assembler;
+
+    public EmployeeController(EmployeeRepository repository, EmployeeModelAssembler assembler) {
         this.repository = repository;
+        this.assembler = assembler;
     }
 
     @GetMapping("/employees")
     CollectionModel<EntityModel<Employee>> all() {
         List<EntityModel<Employee>> employees = repository.findAll().stream()
-                .map(employee -> EntityModel.of(employee,
-                        linkTo(methodOn(EmployeeController.class).one(employee.getId())).withSelfRel(),
-                        linkTo(methodOn(EmployeeController.class).all()).withRel("employees")))
+                .map(assembler::toModel)
                 .collect(Collectors.toList());
 
         return CollectionModel.of(employees,
@@ -41,9 +42,8 @@ public class EmployeeController {
     EntityModel<Employee> one(@PathVariable Long id) {
         Employee employee = repository.findById(id)
                 .orElseThrow(() -> new EmployeeNotFoundException(id));
-        return EntityModel.of(employee,
-                linkTo(methodOn(EmployeeController.class).one(id)).withSelfRel(),
-                linkTo(methodOn(EmployeeController.class).all()).withRel("employees"));
+
+        return assembler.toModel(employee);
     }
 
     @PutMapping("/employees/{id}")
