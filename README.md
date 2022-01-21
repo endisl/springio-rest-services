@@ -1,7 +1,7 @@
 ## Building REST services with Spring
 
 REST is different from RPC (Remote Procedure Call) in the sense that with RPC there is no way to know how to interact with a service.
-In this project, Spring HATEOAS is leveraged in order to build a RESTful service with hypermedia-driven outputs.
+In this project, Spring HATEOAS is leveraged in order to build a RESTful service with not only the ability to provide hypermedia-driven outputs but also with high resiliency allowing the REST API to evolve safely without breaking clients.
 
 ### Setting up the project
 - Java 17
