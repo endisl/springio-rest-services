@@ -1,5 +1,7 @@
-package com.endiluamba.payroll;
+package com.endiluamba.payroll.assemblers;
 
+import com.endiluamba.payroll.controllers.EmployeeController;
+import com.endiluamba.payroll.entities.Employee;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.RepresentationModelAssembler;
 import org.springframework.stereotype.Component;

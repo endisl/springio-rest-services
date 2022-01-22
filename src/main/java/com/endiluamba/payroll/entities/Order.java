@@ -1,4 +1,4 @@
-package com.endiluamba.payroll;
+package com.endiluamba.payroll.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -48,8 +48,8 @@ public class Order {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Order)) return false;
-        Order order = (Order) o;
+        if (!(o instanceof com.endiluamba.payroll.entities.Order)) return false;
+        com.endiluamba.payroll.entities.Order order = (com.endiluamba.payroll.entities.Order) o;
         return Objects.equals(id, order.id) && Objects.equals(description, order.description) && Objects.equals(status, order.status);
     }
 

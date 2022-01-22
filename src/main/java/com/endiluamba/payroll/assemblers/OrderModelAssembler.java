@@ -1,5 +1,8 @@
-package com.endiluamba.payroll;
+package com.endiluamba.payroll.assemblers;
 
+import com.endiluamba.payroll.controllers.OrderController;
+import com.endiluamba.payroll.entities.Order;
+import com.endiluamba.payroll.entities.Status;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.RepresentationModelAssembler;
 import org.springframework.stereotype.Component;
@@ -8,10 +11,10 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @Component
-public class OrderModelAssembler implements RepresentationModelAssembler<Order, EntityModel<Order>> {
+public class OrderModelAssembler implements RepresentationModelAssembler<com.endiluamba.payroll.entities.Order, EntityModel<com.endiluamba.payroll.entities.Order>> {
 
     @Override
-    public EntityModel<Order> toModel(Order order) {
+    public EntityModel<com.endiluamba.payroll.entities.Order> toModel(com.endiluamba.payroll.entities.Order order) {
 
         EntityModel<Order> orderModel = EntityModel.of(order,
                 linkTo(methodOn(OrderController.class).one(order.getId())).withSelfRel(),

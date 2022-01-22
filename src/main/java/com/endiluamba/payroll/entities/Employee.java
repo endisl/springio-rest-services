@@ -1,4 +1,4 @@
-package com.endiluamba.payroll;
+package com.endiluamba.payroll.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
