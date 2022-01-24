@@ -75,3 +75,53 @@ Collection of employee resources with new attributes without breaking old client
 }
 ```
 
+Collection of orders with different status and navigational links:
+```
+{
+    "_embedded": {
+        "orderList": [
+        {
+            "id": 3,
+            "description": "iPhone",
+            "status": "IN_PROGRESS",
+            "_links": {
+                "self": {
+                    "href": "http://localhost:8080/orders/3"
+                },
+                "orders": {
+                    "href": "http://localhost:8080/orders"
+                },
+                "cancel": {
+                    "href": "http://localhost:8080/orders/3/cancel"
+                },
+                "complete": {
+                    "href": "http://localhost:8080/orders/3/cancel"
+                }
+            }
+        },
+        {
+            "id": 4,
+            "description": "MacBook Pro",
+            "status": "COMPLETED",
+            "_links": {
+                "self": {
+                    "href": "http://localhost:8080/orders/4"
+                },
+                "orders": {
+                    "href": "http://localhost:8080/orders"
+                }
+            }
+        }
+        ]
+    },
+    "_links": {
+        "self": {
+            "href": "http://localhost:8080/orders"
+        }
+    }
+}
+```
+
+Only orders IN_PROGRESS can be cancelled, hence `http://localhost:8080/orders/4` results in:
+![Method Not Allowed](src/main/resources/static/methodNotAlowed.png)
+
